@@ -70,10 +70,8 @@
   
   -->
 
-
-
-
-
+  <!-- Languages -->
+  <!-- English -->
   <!-- Used if the player asks an object that it not an NPC to do something -->
 	<dynamictemplate name="PosturesNotGetOn">"That's not something you can get on."</dynamictemplate>
 	<dynamictemplate name="PosturesAlreadyOn">"You're already on " + object.article + "."</dynamictemplate>
@@ -83,7 +81,6 @@
 	<dynamictemplate name="PosturesStandUp">"You stand up."</dynamictemplate>
 	<dynamictemplate name="PosturesOnGround">"You ### on the ground."</dynamictemplate>
 	<dynamictemplate name="PosturesOnSurface">"You ### on " + object.posture_surface + "."</dynamictemplate>
-  
 	<dynamictemplate name="PosturesCannotSitHere">"You cannot sit here."</dynamictemplate>
 	<dynamictemplate name="PosturesCannotReclineHere">"You cannot lie down here."</dynamictemplate>
 	<dynamictemplate name="PosturesNotNpc">"Tell " + object.article + " all you want, " + object.gender + "'s not going to do anything."</dynamictemplate>
@@ -93,18 +90,164 @@
 	<dynamictemplate name="PosturesNpcAlreadyIs">CapFirst(object.gender) + " already is."</dynamictemplate>
 	<dynamictemplate name="PosturesNpcCannotSitHere">"You (or anyone else!) can't sit here!"</dynamictemplate>
 	<dynamictemplate name="PosturesNpcCannotReclineHere">"You (or anyone else!) can't lie down here!"</dynamictemplate>
-  
   <template name="PosturesNotAllowedHere">You (or anyone else) can't ### here!</template>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <template name="EditorNpcLibTypes">*=None; MaleNpc=Male NPC; FemaleNpc=Female NPC; NpcType=Generic NPC; GroupType=Group</template>
+  <template name="EditorNpcLibAgreementMessage">Agreement message (will appear inside quotes; can use text processor)</template>
+  <template name="EditorNpcLibCheckAgreementScript">Check agreement script</template>
+  <template name="EditorNpcLibShouldSetCom">Should set "complies" attribute to true if the NPC is agreeable, false otherwise.</template>
+  <template name="EditorNpcLibShouldGiveARes">Should give a response if the NPC refuses.</template>
+  <template name="EditorNpcLibCanUseCom">Can use "command", "object" local variables.</template>
+  <template name="EditorNpcLibScriptGivesObjAnoNpc">Script to run when this NPC is gives an object to another NPC</template>
+  <template name="EditorNpcLibCanUseSubAndObjLocVar">Can use "subject" (the receiving NPC) and "object" local variables.</template>
+  <template name="EditorNpcLibListOfActionsToPerform">List of actions to perform</template>
+  <template name="EditorNpcLibActionPrompt">Action (eg Move:kitchen, or just text)</template>
+  <template name="EditorNpcLibMove">Move: NPC will move directly to the indicated room</template>
+  <template name="EditorNpcLibGoTo">GoTo: NPC will go to the specified location, one turn per room. Use GoToParent to have the NPC navigate to the same room as an item or another NPC.</template>
+  <template name="EditorNpcLibGetDropGive">Get/Drop/Give: NPC will pick up/drop/give to the player the indicated item (whether it is there or not)</template>
+  <template name="EditorNpcLibLockUnlockOpenCloseWearRemove">Lock/Unlock/Open/Close/Wear/Remove: NPC will lock/unlock/open/close/wear/remove the indicated item (whether it is there or not)</template>
+  <template name="EditorNpcLibSitStandRecline">Sit/Stand/Recline: NPC will sit/stand/recline on the indicated item (whether it is there or not); use "Stand" with an item that is not furniture to have the NPC stand up.</template>
+  <template name="EditorNpcLibSearch">Search: NPC will move via a random exit, and will continue to do so until in the same room as the indicated item</template>
+  <template name="EditorNpcLibWait">Wait: NPC will wait, and will continue to do so until the player or other NPC is the same room if the indicated item is the player or an NPC, or the indicated item is unlocked if it has a "locked" attribute, or until given the indicated item otherwise.</template>
+  <template name="EditorNpcLibPause">Pause: NPC does nothing for one turn.</template>
+  <template name="EditorNpcLibScript">Script: Runs the NPC's "npcscript" script. If this sets the NPC's "deletefromlist" attribute to false, then this will run again next turn.</template>
+  <template name="EditorNpcLibOwnVerbs">You can add your own verbs; add a new function called "Npc", followed by the verb, have it return a Boolean, and take two attributes, the NPC and the item.</template>
+  <template name="EditorNpcLibTitleScript">Script</template>
+  <template name="EditorNpcLibRunWithNpcScript">NPC script (run with NpcScript)</template>
+  <template name="EditorNpcLibSetDelFromListToFalse">Set this.deletefromlist to false to have the script run again next turn.</template>
+  <template name="EditorNpcLibTakeNpc">Take (NPC)</template>
+  <template name="EditorNpcLibTakeNpcChk">Item can be taken by NPC</template>
+  <template name="EditorNpcLibDropNpc">Drop (NPC)</template>
+  <template name="EditorNpcLibDropNpcChk">Item can be dropped by NPC</template>
+  <template name="EditorNpcLibStanding">Standing...</template>
+  <template name="EditorNpcLibCanStandOn">Can stand on?</template>
+  <template name="EditorNpcLibStandOnMsg">Stand on message</template>
+  <template name="EditorNpcLibGetOffStandMsg">Get off message</template>
+  <template name="EditorNpcLibNoStandingMsg">No standing message</template>
+  <template name="EditorNpcLibSitting">Sitting...</template>
+  <template name="EditorNpcLibCanSitOn">Can sit on?</template>
+  <template name="EditorNpcLibSitOnMsg">Sit on message</template>
+  <template name="EditorNpcLibGetOffSitMsg">Get off message</template>
+  <template name="EditorNpcLibNoSittingMsg">No sitting message</template>
+  <template name="EditorNpcLibReclining">Reclining...</template>
+  <template name="EditorNpcLibCanReclineOn">Can recline on?</template>
+  <template name="EditorNpcLibReclineOnMsg">Recline on message</template>
+  <template name="EditorNpcLibGetOffRecMsg">Get off message</template>
+  <template name="EditorNpcLibNoRecliningMessage">No reclining message</template>
+  <template name="EditorNpcLibNote">Note: ### is used as a stand-in for this object (prepended by "the" if appropriate).</template>
+  <template name="EditorNpcLibPostures">Postures</template>
+  <template name="EditorNpcLibSurfaceName">Surface name</template>
+  <template name="EditorNpcLibAvailableActions">Available actions:</template>
+  <template name="EditorNpcLibItemsForNpcs">Items for NPCs</template>
+  <template name="EditorNpcLibTakeDropTypes">null=Default behaviour;boolean=Boolean; script=Run script</template>
+  <template name="EditorNpcLibNoSittingChk">Sitting/reclining prohibited</template>
+  <template name="EditorNpcLibNameOfObjGiven">Name of object given</template>
+  <template name="EditorNpcLibFurnitureType">*=None; furniture_type=Furniture</template>
+  <template name="EditorNpcLibFurniture">Furniture</template>
+  <template name="EditorNpcLibPreferredPosture">Preferred posture</template>
+  <template name="EditorNpcLibNpcActions">NPC Actions</template>
+  <template name="EditorNpcLibPerTurn">Perform actions after turn</template>
+  <template name="EditorNpcLibPerTime">Perform actions after time</template>
+  <template name="EditorNpcLibAfterTurn">Turns</template>
+  <template name="EditorNpcLibYouStepUpOnTo">You step up on to ###.</template>
+  <template name="EditorNpcLibYouStepOff">You step off ###.</template>
+  <template name="EditorNpcLibYouCantStandOn">You can't stand on ###.</template>
+  <template name="EditorNpcLibYouSitOn">You sit on ###.</template>
+  <template name="EditorNpcLibYouGetOffSit">You get off ###.</template>
+  <template name="EditorNpcLibYouCantSitOn">You can't sit on ###.</template>
+  <template name="EditorNpcLibYouLieDownOn">You lie down on ###.</template>
+  <template name="EditorNpcLibYouGetOffLie">You get off ###.</template>
+  <template name="EditorNpcLibYouCantRecOn">You can't recline on ###.</template>
 
+  <!-- Zur Umstellung auf Deutsch folgende Zeilen einklammern -->
+  <!-- Deutsch -->
+  <!-- -->
+	<dynamictemplate name="PosturesNotGetOn">"Das ist nichts, worauf man sich setzen kann."</dynamictemplate>
+	<dynamictemplate name="PosturesAlreadyOn">"Du bist schon auf " + object.article + "."</dynamictemplate>
+	<dynamictemplate name="PosturesAlreadyAre">"Das bist du schon."</dynamictemplate>
+	<dynamictemplate name="PosturesNotOnObj">"Du bist nicht auf " + object.article + "."</dynamictemplate>
+	<dynamictemplate name="PosturesNotOnAny">"Du bist auf nichts."</dynamictemplate>
+	<dynamictemplate name="PosturesStandUp">"Du stehst auf."</dynamictemplate>
+	<dynamictemplate name="PosturesOnGround">"Du ### auf dem Boden."</dynamictemplate>
+	<dynamictemplate name="PosturesOnSurface">"DU ### auf " + object.posture_surface + "."</dynamictemplate>
+	<dynamictemplate name="PosturesCannotSitHere">"Du kannst hier nicht sitzen."</dynamictemplate>
+	<dynamictemplate name="PosturesCannotReclineHere">"Du kannst hier nicht liegen."</dynamictemplate>
+	<dynamictemplate name="PosturesNotNpc">"Sag " + object.article + " alles was du willst. " + object.gender + " wird es nicht tun."</dynamictemplate>
+	<dynamictemplate name="PosturesNpcNotOnObj">WriteVerb(object, "be") + " nicht auf " + obj.article + "."</dynamictemplate>
+	<dynamictemplate name="PosturesNpcNotOnAny">WriteVerb(object, "be") + " nicht auf alles."</dynamictemplate>
+	<dynamictemplate name="PosturesNpcStands">CapFirst(GetDisplayName(object)) + " steht auf."</dynamictemplate>
+	<dynamictemplate name="PosturesNpcAlreadyIs">CapFirst(object.gender) + " ist bereits vorhanden."</dynamictemplate>
+	<dynamictemplate name="PosturesNpcCannotSitHere">"Niemand kann hier sitzen!"</dynamictemplate>
+	<dynamictemplate name="PosturesNpcCannotReclineHere">"Niemand kann hier liegen!"</dynamictemplate>
+  <template name="PosturesNotAllowedHere">Niemand kann hier ###!</template>
+  <template name="EditorNpcLibTypes">*=Ohne; MaleNpc=Männlicher NPC; FemaleNpc=Weiblicher NPC; NpcType=Generischer NPC; GroupType=Gruppe</template>
+  <template name="EditorNpcLibAgreementMessage">Arrangement-Nachricht (wird in Anführungszeichen ausgegeben; Unterstützt ProcessText!)</template>
+  <template name="EditorNpcLibCheckAgreementScript">Arrangement-Skript</template>
+  <template name="EditorNpcLibShouldSetCom">Wenn der NPC mit dem Arrangement einverstanden sein soll, das Attribut "complies" auf true setzen. Ansonsten auf false.</template>
+  <template name="EditorNpcLibShouldGiveARes">Es sollte eine Antwort ausgegeben werden, wenn der NPC nicht mit dem Arrangement einverstanden ist.</template>
+  <template name="EditorNpcLibCanUseCom">Es können "command", "object" und lokale Variablen verwendet werden.</template>
+  <template name="EditorNpcLibScriptGivesObjAnoNpc">Skript wird ausgeführt, wenn dieser NPC ein Objekt an einen anderen NPC weitergibt</template>
+  <template name="EditorNpcLibCanUseSubAndObjLocVar">Es können "subject" (der empfangende NPC), "object" und lokale Variablen verwendet werden.</template>
+  <template name="EditorNpcLibListOfActionsToPerform">Liste der auszuführenden Aktionen</template>
+  <template name="EditorNpcLibActionPrompt">Aktion (z.B. Move:kitchen, oder Ausgabetext)</template>
+  <template name="EditorNpcLibMove">Move: Der NPC wechselt direkt in den angegebenen Raum</template>
+  <template name="EditorNpcLibGoTo">GoTo: Der NPC geht in den angegebenen Raum, Ein Spielzug pro Raum. Verwende GoToParent, um den NPC in den gleichen Raum wie das angegebene Objekt oder einen anderen NPC navigieren zu lassen.</template>
+  <template name="EditorNpcLibGetDropGive">Get/Drop/Give: Der NPC wird das angegebene Objekt vom Spieler nehmen / Er wird es fallen lassen / Er wird es dem Spieler geben (Es kann dabei vorhanden sein oder nicht).</template>
+  <template name="EditorNpcLibLockUnlockOpenCloseWearRemove">Lock/Unlock/Open/Close/Wear/Remove: Der NPC wird das angegebene Objekt sperren/entsperren/öffnen/schließen/anziehen/ausziehen (Er kann dabei vorhanden sein oder nicht).</template>
+  <template name="EditorNpcLibSitStandRecline">Sit/Stand/Recline: Der NPC wird auf dem angegebenen Objekt sitzen/stehen/liegen (Er kann dabei vorhanden sein oder nicht). Verwenden Sie "Stand" mit einem Objekt, das kein Möbelstück ist, um den NPC hinzustellen.</template>
+  <template name="EditorNpcLibSearch">Search: Der NPC bewegt sich solange über einen zufällig gewählten Ausgang, bis er sich im selben Raum wie das angegebene Objekt befindet.</template>
+  <template name="EditorNpcLibWait">Wait: Der NPC wartet solange, bis der Spieler oder ein anderer NPC den gleichen Raum betreten hat.</template>
+  <template name="EditorNpcLibPause">Pause: Der NPC pausiert für einen Spielzug.</template>
+  <template name="EditorNpcLibScript">Script: Führt das "npcscript"-Skript des NPC aus. Setze das Attribut "deletefromlist" des NPC auf false, damit es in der nächsten Spielzug wieder ausgeführt wird.</template>
+  <template name="EditorNpcLibOwnVerbs">Du kannst deine eigenen Verben hinzufügen. Dazu einfach eine neue Funktion namens "Npc", gefolgt vom Verb, erstellen (z. B. NpcTake). Die Funktion muss ein booleaschen Wert für die erfolgreiche Ausführung zurückgeben. Zudem müssen zwei Attribute für den NPC und das Objekt übergeben werden.</template>
+  <template name="EditorNpcLibTitleScript">Skript</template>
+  <template name="EditorNpcLibRunWithNpcScript">NPC-Skript (Ausführbar per NpcScript)</template>
+  <template name="EditorNpcLibSetDelFromListToFalse">Setze das Attribut "this.deletefromlist" auf false, damit das Skript beim nächsten Spielzug wieder ausgeführt wird.</template>
+  <template name="EditorNpcLibTakeNpc">Nimm (NPC)</template>
+  <template name="EditorNpcLibTakeNpcChk">Muster kann von NPC übernommen werden</template>
+  <template name="EditorNpcLibDropNpc">Lege (NPC)</template>
+  <template name="EditorNpcLibDropNpcChk">Template kann vom NPC gelöscht werden</template>
+  <template name="EditorNpcLibStanding">Stehen...</template>
+  <template name="EditorNpcLibCanStandOn">Es ist Möglich, sich auf das Objekt zu stellen</template>
+  <template name="EditorNpcLibStandOnMsg">Nachricht, die beim draufstellen angezeigt wird</template>
+  <template name="EditorNpcLibGetOffStandMsg">Nachricht, die beim verlassen des Objekts angezeigt wird</template>
+  <template name="EditorNpcLibNoStandingMsg">Nachricht, wenn ein draufstellen nicht möglich ist</template>
+  <template name="EditorNpcLibSitting">Sitzen...</template>
+  <template name="EditorNpcLibCanSitOn">Es ist Möglich, sich auf das Objekt zu setzen</template>
+  <template name="EditorNpcLibSitOnMsg">Nachricht, die beim hinsetzen angezeigt wird</template>
+  <template name="EditorNpcLibGetOffSitMsg">Nachricht, die beim aufstehen angezeigt wird</template>
+  <template name="EditorNpcLibNoSittingMsg">Nachricht, die angezeigt wird, wenn ein hinsetzen nicht möglich ist</template>
+  <template name="EditorNpcLibReclining">Liegen...</template>
+  <template name="EditorNpcLibCanReclineOn">Es ist Möglich, sich auf das Objekt zu legen</template>
+  <template name="EditorNpcLibReclineOnMsg">Nachricht, die beim hinlegen angezeigt wird</template>
+  <template name="EditorNpcLibGetOffRecMsg">Nachricht, die beim aufstehen angezeigt wird</template>
+  <template name="EditorNpcLibNoRecliningMessage">Nachricht, die angezeigt wird, wenn ein hinlegen nicht möglich ist</template>
+  <template name="EditorNpcLibNote">Hinweis: ### wird als Platzhalter für dieses Objekt verwendet (ggf. mit "der, die, das" vorangestellt).</template>
+  <template name="EditorNpcLibPostures">Positionen</template>
+  <template name="EditorNpcLibSurfaceName">Oberflächenname</template>
+  <template name="EditorNpcLibAvailableActions">Verfügbare Aktionen:</template>
+  <template name="EditorNpcLibItemsForNpcs">Objekte für NPCs</template>
+  <template name="EditorNpcLibTakeDropTypes">null=Standard;boolean=Boolesch; script=Skript starten</template>
+  <template name="EditorNpcLibNoSittingChk">Kein sitzen oder liegen</template>
+  <template name="EditorNpcLibNameOfObjGiven">Name des zu gebenden Objekts</template>
+  <template name="EditorNpcLibFurnitureType">*=Kein Möbelstück; furniture_type=Möbelstück</template>
+  <template name="EditorNpcLibFurniture">Möbelstück</template>
+  <template name="EditorNpcLibPreferredPosture">Bevorzugte Positionsart</template>
+  <template name="EditorNpcLibNpcActions">Aktionen der NPCs</template>
+  <template name="EditorNpcLibPerTurn">Aktionen nach Turn ausführen</template>
+  <template name="EditorNpcLibPerTime">Aktionen nach Zeit ausführen</template>
+  <template name="EditorNpcLibAfterTurn">Turns</template>
+  <template name="EditorNpcLibAfterTime">Sekunden</template>
+  <template name="EditorNpcLibYouStepUpOnTo">Du steigst auf ###.</template>
+  <template name="EditorNpcLibYouStepOff">Du steigst von ### herunter.</template>
+  <template name="EditorNpcLibYouCantStandOn">Du kannst nicht auf ### stehen.</template>
+  <template name="EditorNpcLibYouSitOn">Du setzt dich auf ###.</template>
+  <template name="EditorNpcLibYouGetOffSit">Du stehst von ### auf.</template>
+  <template name="EditorNpcLibYouCantSitOn">Du kannst nicht auf ### sitzen.</template>
+  <template name="EditorNpcLibYouLieDownOn">Du legst dich auf ###.</template>
+  <template name="EditorNpcLibYouGetOffLie">Du stehst von ### auf.</template>
+  <template name="EditorNpcLibYouCantRecOn">Du kannst dich nicht auf ### legen.</template>
+
+  <!-- -->
 
 
   <verb name="standon">
@@ -763,6 +906,9 @@
       NpcAskToGiveTo(objectnpc, object, object2)
     </script>
   </command>
+
+
+  
   <function name="NpcAskToGiveTo" parameters="npc, object, subject">
     if (not DoesInherit(npc, "NpcType")) {
       msg(DynamicTemplate("PosturesNotNpc", npc))
@@ -810,8 +956,14 @@
       this.complies = true
     </checkagreement>
     <yesmsg>Okay!</yesmsg>
-    
-    
+
+    <perturn type="boolean">true</perturn>
+    <pertime type="boolean">false</pertime>
+    <afterturn type="int">1</afterturn>
+    <aftertime type="int">5</aftertime>
+    <pastturn type="int">1</pastturn>
+    <pasttime type="int">1</pasttime>
+
     <requestget type="script">
       do (this, "checkagreement", QuickParams("command", "take", "object", object))
       if (this.complies) {
@@ -1137,9 +1289,9 @@
         msg (Replace(this.nostandmsg, "###", GetDefiniteName(this)))
       }
     </stand>
-    <standonmsg>You step up on to ###.</standonmsg>
-    <standoffmsg>You step off ###.</standoffmsg>
-    <nostandmsg>You can't stand on ###.</nostandmsg>
+    <standonmsg>[EditorNpcLibYouStepUpOnTo]</standonmsg>
+    <standoffmsg>[EditorNpcLibYouStepOff]</standoffmsg>
+    <nostandmsg>[EditorNpcLibYouCantStandOn]</nostandmsg>
 
     <cansiton type="boolean">true</cansiton>
     <sit type="script">
@@ -1150,9 +1302,9 @@
         msg (Replace(this.nositmsg, "###", GetDefiniteName(this)))
       }
     </sit>
-    <sitonmsg>You sit on ###.</sitonmsg>
-    <sitoffmsg>You get off ###.</sitoffmsg>
-    <nositmsg>You can't sit on ###.</nositmsg>
+    <sitonmsg>[EditorNpcLibYouSitOn]</sitonmsg>
+    <sitoffmsg>[EditorNpcLibYouGetOffSit]</sitoffmsg>
+    <nositmsg>[EditorNpcLibYouCantSitOn]</nositmsg>
 
     <canreclineon type="boolean">false</canreclineon>
     <recline type="script">
@@ -1163,9 +1315,9 @@
         msg (Replace(this.noreclinemsg, "###", GetDefiniteName(this)))
       }
     </recline>
-    <reclineonmsg>You lie down on ###.</reclineonmsg>
-    <reclineoffmsg>You get off ###.</reclineoffmsg>
-    <noreclinemsg>You can't recline on ###.</noreclinemsg>
+    <reclineonmsg>[EditorNpcLibYouLieDownOn]</reclineonmsg>
+    <reclineoffmsg>[EditorNpcLibYouGetOffLie]</reclineoffmsg>
+    <noreclinemsg>[EditorNpcLibYouCantRecOn]</noreclinemsg>
 
     <displayverbs type="listextend">Stand on;Sit on;Lie on</displayverbs>
     <preferred_posture>sit</preferred_posture>
@@ -1239,12 +1391,32 @@
     <visible type="boolean">false</visible>
   </type>
   
-  
-  
-  <turnscript name="NpcTurnScript">
-    <enabled/>
-    <script>
-      foreach (o, AllObjects()) {
+  <function name="NpcActionScript" parameters="Typ">
+    goon = false
+    foreach (o, AllObjects()) {
+      if (Typ = "turn" and GetBoolean(o, "perturn")) {
+        afterturn = GetInt(o, "afterturn")
+        pastturn = GetInt(o, "pastturn")
+        if (afterturn = pastturn) {
+          o.pastturn = 1
+          goon = true
+        }
+        else {
+          IncreaseObjectCounter (o, "pastturn")
+        }
+      }
+      if (Typ = "time" and GetBoolean(o, "pertime")) {
+        aftertime = GetInt(o, "aftertime")
+        pasttime = GetInt(o, "pasttime")
+        if (aftertime = pasttime) {
+          o.pasttime = 1
+          goon = true
+        }
+        else {
+          IncreaseObjectCounter (o, "pasttime")
+        }
+      }
+      if (goon) {
         if (HasScript(o, "takeaturn")) {
           if (GetBoolean(o, "paused")) {
             o.paused = false
@@ -1267,10 +1439,25 @@
             do (o, "takeaturn")
           }
         }
+        JS.scrollToEnd ()
       }
+    }
+  </function>
+
+  <turnscript name="NpcTurnScript">
+    <enabled />
+    <script>
+      NpcActionScript ("turn")
     </script>
   </turnscript>
 
+  <timer name="NpcTimerScript">
+    <interval>1</interval>
+    <enabled />
+    <script>
+      NpcActionScript ("time")
+    </script>
+  </timer>
   
   <!--
   Adds "ing" to a verb. Works for one syllable  words and words where the last syllable  is stressed.
@@ -1470,7 +1657,7 @@
     }
     if (not oldroom = npc.parent) {
       // leaving
-      if (oldroom = player.parent) {
+      if (oldroom = game.pov.parent) {
         exitname = GetExitByLink (oldroom, npc.parent)
         if (not exitname = null) {
           exit = GetObject(exitname)
@@ -1483,7 +1670,7 @@
         }
       }
       // entering
-      if (npc.parent = player.parent) {
+      if (npc.parent = game.pov.parent) {
         exitname = GetExitByLink (npc.parent, oldroom)
         if (not exitname = null) {
           exit = GetObject(exitname)
@@ -1814,11 +2001,7 @@
     room.pathlib_current = game.pathID
     return (entry)
   </function>
-  
-  
-  
-  
-  
+    
   <!-- Interface -->
     
   <!-- NPC compliance -->
@@ -1830,20 +2013,20 @@
     <control>
       <controltype>dropdowntypes</controltype>
       <caption>Type</caption>
-      <types>*=None; MaleNpc=Male NPC; FemaleNpc=Female NPC; NpcType=Generic NPC; GroupType=Group</types>
+      <types>[EditorNpcLibTypes]</types>
       <width>150</width>
     </control>
     
     <control>
       <controltype>textbox</controltype>
-      <caption>Agreement message (will appear inside quotes; can use text processor)</caption>
+      <caption>[EditorNpcLibAgreementMessage]</caption>
       <attribute>yesmsg</attribute>
       <mustinherit>NpcType</mustinherit>
       <mustnotinherit>GroupType</mustnotinherit>
     </control>
 
     <control>
-      <caption>Check agreement script</caption>
+      <caption>[EditorNpcLibCheckAgreementScript]</caption>
       <controltype>script</controltype>
       <attribute>checkagreement</attribute>
       <mustinherit>NpcType</mustinherit>
@@ -1852,37 +2035,37 @@
     
     <control>
       <controltype>label</controltype>
-      <caption>Should set "complies" attribute to true if the NPC is agreeable, false otherwise.</caption>
+      <caption>[EditorNpcLibShouldSetCom]</caption>
       <mustinherit>NpcType</mustinherit>
       <mustnotinherit>GroupType</mustnotinherit>
     </control>    
 
     <control>
       <controltype>label</controltype>
-      <caption>Should give a response if the NPC refuses.</caption>
+      <caption>[EditorNpcLibShouldGiveARes]</caption>
       <mustinherit>NpcType</mustinherit>
       <mustnotinherit>GroupType</mustnotinherit>
     </control>    
 
     <control>
       <controltype>label</controltype>
-      <caption>Can use "command", "object" local variables.</caption>
+      <caption>[EditorNpcLibCanUseCom]</caption>
       <mustinherit>NpcType</mustinherit>
       <mustnotinherit>GroupType</mustnotinherit>
     </control>    
     
     <control>
       <controltype>scriptdictionary</controltype>
-      <caption>Script to run when this NPC is gives an object to another NPC</caption>
+      <caption>[EditorNpcLibScriptGivesObjAnoNpc]</caption>
       <attribute>npc_give_script_list</attribute>
-      <keyprompt>Name of object given</keyprompt>
+      <keyprompt>[EditorNpcLibNameOfObjGiven]</keyprompt>
       <mustinherit>NpcType</mustinherit>
       <mustnotinherit>GroupType</mustnotinherit>
     </control>
     
     <control>
       <controltype>label</controltype>
-      <caption>Can use "subject" (the receiving NPC) and "object" local variables.</caption>
+      <caption>[EditorNpcLibCanUseSubAndObjLocVar]</caption>
       <mustinherit>NpcType</mustinherit>
       <mustnotinherit>GroupType</mustnotinherit>
     </control>    
@@ -1894,93 +2077,121 @@
   <!-- NPC actions -->
   <tab>
     <parent>_ObjectEditor</parent>
-    <caption>NPC Actions</caption>
+    <caption>[EditorNpcLibNpcActions]</caption>
     <mustinherit>NpcType</mustinherit>
 
     <control>
-     <caption>List of actions to perform</caption>
+     <caption>[EditorNpcLibListOfActionsToPerform]</caption>
       <controltype>list</controltype>
       <attribute>actions</attribute>
       <width>200</width>
       <mustinherit>NpcType</mustinherit>
-      <editprompt>Action (eg Move:kitchen, or just text)</editprompt>
+      <editprompt>[EditorNpcLibActionPrompt]</editprompt>
     </control>
 
     <control>
-      <controltype>title</controltype>
-      <caption>Available actions:</caption>
-      <mustinherit>NpcType</mustinherit>
-    </control>
-      
-    <control>
-      <controltype>label</controltype>
-      <caption>Move: NPC will move directly to the indicated room</caption>
-      <mustinherit>NpcType</mustinherit>
-    </control>
-      
-    <control>
-      <controltype>label</controltype>
-      <caption>GoTo: NPC will go to the specified location, one turn per room. Use GoToParent to have the NPC navigate to the same room as an item or another NPC.</caption>
-      <mustinherit>NpcType</mustinherit>
-    </control>
-      
-    <control>
-      <controltype>label</controltype>
-      <caption>Get/Drop/Give: NPC will pick up/drop/give to the player the indicated item (whether it is there or not)</caption>
-      <mustinherit>NpcType</mustinherit>
-    </control>
-      
-    <control>
-      <controltype>label</controltype>
-      <caption>Lock/Unlock/Open/Close/Wear/Remove: NPC will lock/unlock/open/close/wear/remove the indicated item (whether it is there or not)</caption>
-      <mustinherit>NpcType</mustinherit>
-    </control>
-      
-    <control>
-      <controltype>label</controltype>
-      <caption>Sit/Stand/Recline: NPC will sit/stand/recline on the indicated item (whether it is there or not); use "Stand" with an item that is not furniture to have the NPC stand up.</caption>
-      <mustinherit>NpcType</mustinherit>
-    </control>
-      
-    <control>
-      <controltype>label</controltype>
-      <caption>Search: NPC will move via a random exit, and will continue to do so until in the same room as the indicated item</caption>
+      <caption>[EditorNpcLibPerTurn]</caption>
+      <controltype>checkbox</controltype>
+      <attribute>perturn</attribute>
       <mustinherit>NpcType</mustinherit>
     </control>
 
     <control>
-      <controltype>label</controltype>
-      <caption>Wait: NPC will wait, and will continue to do so until the player or other NPC is the same room if the indicated item is the player or an NPC, or the indicated item is unlocked if it has a "locked" attribute, or until given the indicated item otherwise.</caption>
+      <controltype>number</controltype>
+      <caption>[EditorNpcLibAfterTurn]</caption>
+      <attribute>afterturn</attribute>
+      <onlydisplayif>this.perturn</onlydisplayif>
+    </control>
+
+    <control>
+      <caption>[EditorNpcLibPerTime]</caption>
+      <controltype>checkbox</controltype>
+      <attribute>pertime</attribute>
+      <mustinherit>NpcType</mustinherit>
+    </control>  
+
+    <control>
+      <controltype>number</controltype>
+      <caption>[EditorNpcLibAfterTime]</caption>
+      <attribute>aftertime</attribute>
+      <onlydisplayif>this.pertime</onlydisplayif>
+    </control>
+
+    <control>
+      <controltype>title</controltype>
+      <caption>[EditorNpcLibAvailableActions]</caption>
       <mustinherit>NpcType</mustinherit>
     </control>
       
     <control>
       <controltype>label</controltype>
-      <caption>Pause: NPC does nothing for one turn.</caption>
+      <caption>[EditorNpcLibMove]</caption>
       <mustinherit>NpcType</mustinherit>
     </control>
       
     <control>
       <controltype>label</controltype>
-      <caption>Script: Runs the NPC's "npcscript" script. If this sets the NPC's "deletefromlist" attribute to false, then this will run again next turn.</caption>
+      <caption>[EditorNpcLibGoTo]</caption>
       <mustinherit>NpcType</mustinherit>
     </control>
       
     <control>
       <controltype>label</controltype>
-      <caption>You can add your own verbs; add a new function called "Npc", followed by the verb, have it return a Boolean, and take two attributes, the NPC and the item.</caption>
+      <caption>[EditorNpcLibGetDropGive]</caption>
+      <mustinherit>NpcType</mustinherit>
+    </control>
+      
+    <control>
+      <controltype>label</controltype>
+      <caption>[EditorNpcLibLockUnlockOpenCloseWearRemove]</caption>
+      <mustinherit>NpcType</mustinherit>
+    </control>
+      
+    <control>
+      <controltype>label</controltype>
+      <caption>[EditorNpcLibSitStandRecline]</caption>
+      <mustinherit>NpcType</mustinherit>
+    </control>
+      
+    <control>
+      <controltype>label</controltype>
+      <caption>[EditorNpcLibSearch]</caption>
+      <mustinherit>NpcType</mustinherit>
+    </control>
+
+    <control>
+      <controltype>label</controltype>
+      <caption>[EditorNpcLibWait]</caption>
+      <mustinherit>NpcType</mustinherit>
+    </control>
+      
+    <control>
+      <controltype>label</controltype>
+      <caption>[EditorNpcLibPause]</caption>
+      <mustinherit>NpcType</mustinherit>
+    </control>
+      
+    <control>
+      <controltype>label</controltype>
+      <caption>[EditorNpcLibScript]</caption>
+      <mustinherit>NpcType</mustinherit>
+    </control>
+      
+    <control>
+      <controltype>label</controltype>
+      <caption>[EditorNpcLibOwnVerbs]</caption>
       <mustinherit>NpcType</mustinherit>
     </control>
       
     <control>
       <controltype>title</controltype>
-      <caption>Script</caption>
+      <caption>[EditorNpcLibTitleScript]</caption>
       <mustinherit>NpcType</mustinherit>
     </control>
       
     <control>
       <controltype>script</controltype>
-      <caption>NPC script (run with NpcScript)</caption>
+      <caption>[EditorNpcLibRunWithNpcScript]</caption>
       <attribute>npcscript</attribute>
       <width>200</width>
       <mustinherit>NpcType</mustinherit>
@@ -1988,7 +2199,7 @@
     
     <control>
       <controltype>label</controltype>
-      <caption>Set this.deletefromlist to false to have the script run again next turn.</caption>
+      <caption>[EditorNpcLibSetDelFromListToFalse]</caption>
       <mustinherit>NpcType</mustinherit>
     </control>
       
@@ -1998,46 +2209,46 @@
   <!-- Items for NPCs -->
   <tab>
     <parent>_ObjectEditor</parent>
-    <caption>Items for NPCs</caption>
+    <caption>[EditorNpcLibItemsForNpcs]</caption>
     <mustnotinherit>editor_room; defaultplayer;NpcType</mustnotinherit>
     
     <control>
       <controltype>multi</controltype>
-      <caption>Take (NPC)</caption>
+      <caption>[EditorNpcLibTakeNpc]</caption>
       <attribute>npc_take</attribute>
       <types>
-        null=Default behaviour;boolean=Boolean; script=Run script
+        [EditorNpcLibTakeDropTypes]
       </types>
-      <checkbox>Item can be taken by NPC</checkbox>
+      <checkbox>[EditorNpcLibTakeNpcChk]</checkbox>
     </control>
     
     <control>
       <controltype>multi</controltype>
-      <caption>Drop (NPC)</caption>
+      <caption>[EditorNpcLibDropNpc]</caption>
       <attribute>npc_drop</attribute>
       <types>
-        null=Default behaviour;boolean=Boolean; script=Run script
+        [EditorNpcLibTakeDropTypes]
       </types>
-      <checkbox>Item can be dropped by NPC</checkbox>
+      <checkbox>[EditorNpcLibDropNpcChk]</checkbox>
     </control>
         
     
     <control>
       <controltype>dropdowntypes</controltype>
       <caption>Type</caption>
-      <types>*=None; furniture_type=Furniture</types>
+      <types>[EditorNpcLibFurnitureType]</types>
       <width>150</width>
     </control>
     
     <control>
       <controltype>title</controltype>
-      <caption>Furniture</caption>
+      <caption>[EditorNpcLibFurniture]</caption>
       <mustinherit>furniture_type</mustinherit>
     </control>
 
     <control>
       <controltype>dropdown</controltype>
-      <caption>Preferred posture</caption>
+      <caption>[EditorNpcLibPreferredPosture]</caption>
       <attribute>preferred_posture</attribute>
       <validvalues type="simplestringlist">sit;stand;recline</validvalues>
       <freetext/>
@@ -2049,12 +2260,12 @@
 
     <control>
       <controltype>title</controltype>
-      <caption>Standing...</caption>
+      <caption>[EditorNpcLibStanding]</caption>
       <mustinherit>furniture_type</mustinherit>
     </control>
       
     <control>
-      <caption>Can stand on?</caption>
+      <caption>[EditorNpcLibCanStandOn]</caption>
       <controltype>checkbox</controltype>
       <attribute>canstandon</attribute>
       <width>200</width>
@@ -2063,7 +2274,7 @@
 
     <control>
       <controltype>textbox</controltype>
-      <caption>Stand on message</caption>
+      <caption>[EditorNpcLibStandOnMsg]</caption>
       <attribute>standonmsg</attribute>
       <mustinherit>furniture_type</mustinherit>
       <onlydisplayif>this.canstandon</onlydisplayif>
@@ -2071,7 +2282,7 @@
 
     <control>
       <controltype>textbox</controltype>
-      <caption>Get off message</caption>
+      <caption>[EditorNpcLibGetOffStandMsg]</caption>
       <attribute>standoffmsg</attribute>
       <mustinherit>furniture_type</mustinherit>
       <onlydisplayif>this.canstandon</onlydisplayif>
@@ -2079,7 +2290,7 @@
 
     <control>
       <controltype>textbox</controltype>
-      <caption>No standing message</caption>
+      <caption>[EditorNpcLibNoStandingMsg]</caption>
       <attribute>nostandmsg</attribute>
       <mustinherit>furniture_type</mustinherit>
       <onlydisplayif>not this.canstandon</onlydisplayif>
@@ -2090,12 +2301,12 @@
     
     <control>
       <controltype>title</controltype>
-      <caption>Sitting...</caption>
+      <caption>[EditorNpcLibSitting]</caption>
       <mustinherit>furniture_type</mustinherit>
     </control>
       
     <control>
-      <caption>Can sit on?</caption>
+      <caption>[EditorNpcLibCanSitOn]</caption>
       <controltype>checkbox</controltype>
       <attribute>cansiton</attribute>
       <width>200</width>
@@ -2104,7 +2315,7 @@
 
     <control>
       <controltype>textbox</controltype>
-      <caption>Sit on message</caption>
+      <caption>[EditorNpcLibSitOnMsg]</caption>
       <attribute>sitonmsg</attribute>
       <mustinherit>furniture_type</mustinherit>
       <onlydisplayif>this.cansiton</onlydisplayif>
@@ -2112,7 +2323,7 @@
 
     <control>
       <controltype>textbox</controltype>
-      <caption>Get off message</caption>
+      <caption>[EditorNpcLibGetOffSitMsg]</caption>
       <attribute>sitoffmsg</attribute>
       <mustinherit>furniture_type</mustinherit>
       <onlydisplayif>this.cansiton</onlydisplayif>
@@ -2120,7 +2331,7 @@
 
     <control>
       <controltype>textbox</controltype>
-      <caption>No sitting message</caption>
+      <caption>[EditorNpcLibNoSittingMsg]</caption>
       <attribute>nositmsg</attribute>
       <mustinherit>furniture_type</mustinherit>
       <onlydisplayif>not this.cansiton</onlydisplayif>
@@ -2135,12 +2346,12 @@
 
     <control>
       <controltype>title</controltype>
-      <caption>Reclining...</caption>
+      <caption>[EditorNpcLibReclining]</caption>
       <mustinherit>furniture_type</mustinherit>
     </control>
       
     <control>
-      <caption>Can recline on?</caption>
+      <caption>[EditorNpcLibCanReclineOn]</caption>
       <controltype>checkbox</controltype>
       <attribute>canreclineon</attribute>
       <width>200</width>
@@ -2149,7 +2360,7 @@
 
     <control>
       <controltype>textbox</controltype>
-      <caption>Recline on msg</caption>
+      <caption>[EditorNpcLibReclineOnMsg]</caption>
       <attribute>reclineonmsg</attribute>
       <mustinherit>furniture_type</mustinherit>
       <onlydisplayif>this.canreclineon</onlydisplayif>
@@ -2157,7 +2368,7 @@
 
     <control>
       <controltype>textbox</controltype>
-      <caption>Get off message</caption>
+      <caption>[EditorNpcLibGetOffRecMsg]</caption>
       <attribute>reclineoffmsg</attribute>
       <mustinherit>furniture_type</mustinherit>
       <onlydisplayif>this.canreclineon</onlydisplayif>
@@ -2165,7 +2376,7 @@
 
     <control>
       <controltype>textbox</controltype>
-      <caption>No reclining message</caption>
+      <caption>[EditorNpcLibNoRecliningMessage]</caption>
       <attribute>noreclinemsg</attribute>
       <mustinherit>furniture_type</mustinherit>
       <onlydisplayif>not this.canreclineon</onlydisplayif>
@@ -2176,7 +2387,7 @@
     
     <control>
       <controltype>label</controltype>
-      <caption>Note: ### is used as a stand-in for this object (prepended by "the" if appropriate).</caption>
+      <caption>[EditorNpcLibNote]</caption>
       <mustinherit>furniture_type</mustinherit>
     </control>
   </tab>
@@ -2185,32 +2396,32 @@
   <!-- Rooms for NPCs -->
   <tab>
     <parent>_ObjectEditor</parent>
-    <caption>Postures</caption>
+    <caption>[EditorNpcLibPostures]</caption>
     <mustnotinherit>editor_object; defaultplayer</mustnotinherit>
     
     <control>
       <controltype>checkbox</controltype>
       <attribute>nositting</attribute>
-      <caption>Sitting/reclining prohibited</caption>
+      <caption>[EditorNpcLibNoSittingChk]</caption>
     </control>
 
     <control>
       <controltype>textbox</controltype>
-      <caption>No sitting msg</caption>
+      <caption>[EditorNpcLibNoSittingMsg]</caption>
       <attribute>nositmsg</attribute>
       <onlydisplayif>GetBoolean(this, "nositting")</onlydisplayif>
     </control>
 
     <control>
       <controltype>textbox</controltype>
-      <caption>No reclining msg</caption>
+      <caption>[EditorNpcLibNoRecliningMessage]</caption>
       <attribute>noreclinemsg</attribute>
       <onlydisplayif>GetBoolean(this, "nositting")</onlydisplayif>
     </control>
 
     <control>
       <controltype>textbox</controltype>
-      <caption>Surface name</caption>
+      <caption>[EditorNpcLibSurfaceName]</caption>
       <attribute>posture_surface</attribute>
       <onlydisplayif>not GetBoolean(this, "nositting")</onlydisplayif>
     </control>
