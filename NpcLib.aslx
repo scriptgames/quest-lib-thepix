@@ -1392,8 +1392,8 @@
   </type>
   
   <function name="NpcActionScript" parameters="Typ">
-    goon = false
     foreach (o, AllObjects()) {
+      goon = false
       if (Typ = "turn" and GetBoolean(o, "perturn")) {
         afterturn = GetInt(o, "afterturn")
         pastturn = GetInt(o, "pastturn")
@@ -1439,7 +1439,6 @@
             do (o, "takeaturn")
           }
         }
-        JS.scrollToEnd ()
       }
     }
   </function>
